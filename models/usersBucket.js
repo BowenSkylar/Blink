@@ -21,6 +21,9 @@ function addToBucket(req, res, next) {
     })
     .catch((err) => {
       console.log('--> No event found, adding event');
+        if(req.body.rating === undefined){
+          req.body.rating = 0;
+        }
       db.none(`INSERT INTO events (user_id, name, icon, rating, formatted_address, place_img, place_id, status)
               VALUES ($/user_id/, $/name/, $/icon/, $/rating/, $/formatted_address/, $/place_img/, $/place_id/, $/status/);`, req.body)
         .then(() => next())

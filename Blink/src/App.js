@@ -98,12 +98,15 @@ class App extends Component {
     .then(this.updateUserData())
   }
   handleAddClick(details) {
+    console.log('activity added to your bucket list!')
     AjaxAdapter.addToBucket(details, this.state.userProfile.id).then(() => this.getBucket())
   }
   handleCompleteClick(id) {
+    console.log('mark item as completed!')
     AjaxAdapter.completeEvent(id).then(() => this.getBucket())
   }
   handleDeleteClick(id) {
+    console.log('deleted item!');
     AjaxAdapter.deleteEvent(id).then(() => this.getBucket())
   }
   updateUserData() {
